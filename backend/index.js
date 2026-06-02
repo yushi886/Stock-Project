@@ -9,6 +9,16 @@ app.use(express.json());
 const cors = require("cors");
 
 app.use(cors());
+
+app.get("/", (req, res) => {
+  res.send("Backend Running Successfully");
+});
+
+const PORT = process.env.PORT || 3002;
+
+app.listen(PORT, () => {
+  console.log("🚀 Server ready");
+});
 // DB FIRST, then server
 mongoose.connect(process.env.MONGO_URL)
   .then(() => {
@@ -41,7 +51,6 @@ mongoose.connect(process.env.MONGO_URL)
       res.send("Order saved!");
     });
     
-    app.listen(3002, () => console.log("🚀 Server ready"));
     
     //Add positions route
     // app.get("/addPositions", async (req, res) => {
